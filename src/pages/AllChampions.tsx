@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import apiClient, { BASE_URL } from "../api/apiClient";
 import { toast } from "react-toastify";
 import { Button, Card, Carousel, Col, Container, Row } from "react-bootstrap";
+import * as Sentry from "@sentry/react";
 
 const AllChampions = () => {
   const [champions, setChampions] = useState<Champion[]>([]);
@@ -13,7 +14,10 @@ const AllChampions = () => {
     apiClient
       .get("/champions")
       .then((response) => setChampions(response.data))
-      .catch(() => toast.error("Couldn't load champions!"));
+      .catch((error) => {
+        toast.error("Couldn't load champions!");
+        Sentry.captureException(error);
+      });
   }, []);
 
   const generateCard = (c: Champion) => {

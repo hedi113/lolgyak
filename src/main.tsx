@@ -8,6 +8,12 @@ import NewChampion from "./pages/NewChampion";
 import Login from "./pages/Login";
 import { ToastContainer } from "react-toastify";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import * as Sentry from "@sentry/react";
+
+Sentry.init({
+  dsn: "https://7bdbbdf923a2c175666143bca1496724@o4510912025722880.ingest.de.sentry.io/4510912042827856",
+  sendDefaultPii: true,
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
