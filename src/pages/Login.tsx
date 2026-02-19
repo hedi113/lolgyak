@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { User } from "../types/user";
+import type { User } from "../types/User";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../api/apiClient";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ const Login = () => {
 
   const submit = () => {
     apiClient
-      .post("/login")
+      .post("/login", user)
       .then(() => {
         localStorage.setItem("credentials", JSON.stringify(user));
         toast.success("Successfully logged in!");
@@ -34,7 +34,7 @@ const Login = () => {
         <input
           type="password"
           onChange={(e) => setUser({ ...user, password: e.target.value })}
-        />
+        /> <br/>
         <Button onClick={submit}>Login</Button>
       </Container>
     </>

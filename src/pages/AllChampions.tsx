@@ -14,7 +14,7 @@ const AllChampions = () => {
       .get("/champions")
       .then((response) => setChampions(response.data))
       .catch(() => toast.error("Couldn't load champions!"));
-  });
+  }, []);
 
   const generateCard = (c: Champion) => {
     return (
@@ -32,11 +32,13 @@ const AllChampions = () => {
                 </Carousel.Item>
               ))}
             </Carousel>
-            <Card.Title>{c.name}</Card.Title>
-            <Card.Text>{c.description}</Card.Text>
-            <Button onClick={() => navigate(`/one-champion/${c.id}`)}>
-              Details
-            </Button>
+            <Card.Body>
+              <Card.Title>{c.name}</Card.Title>
+              <Card.Text>{c.description}</Card.Text>
+              <Button onClick={() => navigate(`/one-champion/${c.id}`)}>
+                Details
+              </Button>
+            </Card.Body>
           </Card>
         </Col>
       </>

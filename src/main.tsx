@@ -7,6 +7,7 @@ import EditChampion from "./pages/EditChampion";
 import NewChampion from "./pages/NewChampion";
 import Login from "./pages/Login";
 import { ToastContainer } from "react-toastify";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

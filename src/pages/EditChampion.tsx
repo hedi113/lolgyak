@@ -23,7 +23,7 @@ const EditChampion = () => {
       .get(`/champions/${id}`)
       .then((response) => setChampion(response.data))
       .catch(() => toast.error("Couldn't load the champion!"));
-  });
+  }, [id]);
 
   const auth = JSON.parse(localStorage.getItem("credentials") ?? "{}");
 

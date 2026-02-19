@@ -24,7 +24,7 @@ const OneChampion = () => {
       .get(`/champions/${id}`)
       .then((response) => setChampion(response.data))
       .catch(() => toast.error("Couldn't load the champion!"));
-  });
+  }, [id]);
 
   const isLogged = () => localStorage.getItem("credentials") !== null;
 
